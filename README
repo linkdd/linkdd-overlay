@@ -1,10 +1,10 @@
 This is my personal Gentoo overlay. Used for personal projects and followed projects.
 
-Currently in:
-     WMFS - http://wmfs.info
+Adding overlay with 'layman' :
+     $ layman -f -a linkdd-portage -o https://github.com/linkdd/linkdd-overlay/raw/master/overlays.xml
 
-Will be soon included :
-     Cream-Browser - http://cream-browser.net
-     PCStats - http://github.com/linkdd/pcstats
+Adding overlay with 'PORTDIR_OVERLAY'
+     $ git clone git://github.com/linkdd/linkdd-overlay.git /usr/local/portage
+     $ echo "PORTDIR_OVERLAY=\"/usr/local/portage\"" >> /etc/make.conf
 
 Contact me: David Delassus <linkdd@ydb.me>
