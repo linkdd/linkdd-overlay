@@ -30,7 +30,7 @@ src_unpack() {
 }
 
 src_configure() {
-	local myargs="--prefix ${EPREFIX}/usr --xdg-config-dir ${EPREFIX}/etc/xdg --man-prefix ${EPREFIX}/usr/man"
+	local myargs="--prefix ${EPREFIX}/usr --xdg-config-dir ${EPREFIX}/etc/xdg --man-prefix ${EPREFIX}/usr/share/man"
 
 	if ! use imlib2; then
 		myargs="${myargs} --without-imlib2"
