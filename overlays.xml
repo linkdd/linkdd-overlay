@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<layman>
+     <overlay
+          contact = "linkdd@ydb.me"
+          type    = "git"
+          src     = "git://github.com/linkdd/linkdd-overlay.git"
+          name    = "linkdd-overlay">
+          <link>
+               http://github.com/linkdd/linkdd-overlay
+          </link>
+          <description>
+               Gentoo overlay for personal projects and followed projects
+          </description>
+     </overlay>
+</layman>
