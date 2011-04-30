@@ -7,4 +7,4 @@ Adding overlay with 'PORTDIR_OVERLAY'
      $ git clone git://github.com/linkdd/linkdd-overlay.git /usr/local/portage
      $ echo "PORTDIR_OVERLAY=\"/usr/local/portage\"" >> /etc/make.conf
 
-Contact me: David Delassus <linkdd@ydb.me>
+Contact me: David Delassus <david.jose.delassus@gmail.com>
