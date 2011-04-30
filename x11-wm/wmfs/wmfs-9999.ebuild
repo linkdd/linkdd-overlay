@@ -12,7 +12,7 @@ SRC_GIT="git://github.com/xorg62/wmfs.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="imlib2 xrandr xinerama"
+IUSE="imlib2 xrandr xinerama splitlayout"
 
 DEPEND="dev-vcs/git
 		dev-util/pkgconfig
@@ -26,7 +26,11 @@ RDEPEND="${DEPEND}
 		xinerama? ( x11-libs/libXinerama )"
 
 src_unpack() {
-	git clone ${SRC_GIT} ${WORKDIR}/${P}
+	if use splitlayout; then
+		git clone -b splitlayout ${SRC_GIT} ${WORKDIR}/${P}
+	else
+		git clone ${SRC_GIT} ${WORKDIR}/${P}
+	fi
 }
 
 src_configure() {
