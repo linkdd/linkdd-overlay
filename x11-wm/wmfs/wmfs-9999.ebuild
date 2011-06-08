@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+inherit eutils
+
 EAPI=3
 
 DESCRIPTION="Window Manager From Scratch is a lightweight tiling window manager."
@@ -12,7 +14,7 @@ SRC_GIT="git://github.com/xorg62/wmfs.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="imlib2 xrandr xinerama splitlayout"
+IUSE="imlib2 xrandr xinerama"
 
 DEPEND="dev-vcs/git
 		dev-util/pkgconfig
@@ -26,29 +28,14 @@ RDEPEND="${DEPEND}
 		xinerama? ( x11-libs/libXinerama )"
 
 src_unpack() {
-	if use splitlayout; then
-		git clone -b splitlayout ${SRC_GIT} ${WORKDIR}/${P}
-	else
-		git clone ${SRC_GIT} ${WORKDIR}/${P}
-	fi
+	git clone -b splitlayout ${SRC_GIT} ${WORKDIR}/${P}
 }
 
 src_configure() {
-	local myargs="--prefix ${EPREFIX}/usr --xdg-config-dir ${EPREFIX}/etc/xdg --man-prefix ${EPREFIX}/usr/share/man"
-
-	if ! use imlib2; then
-		myargs="${myargs} --without-imlib2"
-	fi
-
-	if ! use xrandr; then
-		myargs="${myargs} --without-xrandr"
-	fi
-
-	if ! use xinerama; then
-		myargs="${myargs}"
-	fi
-
-	./configure ${myargs} || die "Error: configure failed!"
+	econf \
+		$(use_with imlib2) \
+		$(use_with xrandr) \
+		$(use_with xinerama)
 }
 
 src_compile() {
