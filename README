@@ -1,7 +1,7 @@
 This is my personal Gentoo overlay. Used for personal projects and followed projects.
 
 Adding overlay with 'layman' :
-     $ layman -f -a linkdd-portage -o https://github.com/linkdd/linkdd-overlay/raw/master/overlays.xml
+     $ layman -f -a linkdd-overlay -o https://github.com/linkdd/linkdd-overlay/raw/master/overlays.xml
 
 Adding overlay with 'PORTDIR_OVERLAY'
      $ git clone git://github.com/linkdd/linkdd-overlay.git /usr/local/portage
