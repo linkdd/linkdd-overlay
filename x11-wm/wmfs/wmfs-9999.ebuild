@@ -18,10 +18,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="imlib2 xrandr xinerama xft"
 
 DEPEND="dev-vcs/git
-		dev-util/pkgconfig
-		x11-libs/libX11"
+		dev-util/pkgconfig"
 
 RDEPEND="${DEPEND}
+		x11-libs/libX11
 		imlib2? ( media-libs/imlib2[png] )
 		xrandr? ( x11-libs/libXrandr x11-apps/xrandr )
 		xinerama? ( x11-libs/libXinerama )
