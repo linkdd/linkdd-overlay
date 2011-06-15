@@ -3,6 +3,8 @@
 # $Header: $
 
 EAPI=3
+PYTHON_DEPEND="2"
+inherit python distutils
 
 DESCRIPTION="Tyrs is a twitter and identi.ca client based on curse."
 HOMEPAGE="https://github.com/Nic0/tyrs"
@@ -24,10 +26,12 @@ src_unpack() {
 	git clone ${SRC_GIT} ${WORKDIR}/${P}
 }
 
-src_configure() {
-	python2 setup.py build
+src_prepare() {
+	python_convert_shebangs -r 2 .
+	distutils_src_prepare
 }
 
-src_install() {
-	python2 setup.py install --prefix=${PREFIX} --root=${EPREFIX}
+pkg_setup() {
+	python_set_active_version 2
+	python_pkg_setup
 }
