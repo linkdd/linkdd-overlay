@@ -3,6 +3,7 @@
 # $Header: $
 
 inherit eutils
+inherit cmake-utils
 
 EAPI=3
 
@@ -14,34 +15,34 @@ SRC_GIT="git://github.com/xorg62/wmfs.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="imlib2 xrandr xinerama"
+IUSE="imlib2 xrandr xinerama xft"
 
 DEPEND="dev-vcs/git
 		dev-util/pkgconfig
-		x11-libs/libX11
-		x11-libs/libXft
-		media-libs/freetype"
+		x11-libs/libX11"
 
 RDEPEND="${DEPEND}
 		imlib2? ( media-libs/imlib2[png] )
 		xrandr? ( x11-libs/libXrandr x11-apps/xrandr )
-		xinerama? ( x11-libs/libXinerama )"
+		xinerama? ( x11-libs/libXinerama )
+		xft? ( x11-libs/libXft media-libs/freetype )"
 
 src_unpack() {
 	git clone -b splitlayout ${SRC_GIT} ${WORKDIR}/${P}
 }
 
 src_configure() {
-	econf \
-		$(use_with imlib2) \
-		$(use_with xrandr) \
-		$(use_with xinerama)
+	cmake-utils_src_configure \
+		$(cmake-utils_use_with imlib2) \
+		$(cmake-utils_use_with xrandr) \
+		$(cmake-utils_use_with xinerama) \
+		$(cmake-utils_use_with xft) || die "Error: cmake configure failed!"
 }
 
 src_compile() {
-	emake || die "Error: make failed!"
+	cmake-utils_src_make || die "Error: make failed!"
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "Error: make install failed!"
+	cmake-utils_src_install
 }
