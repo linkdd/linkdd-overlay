@@ -25,9 +25,9 @@ src_unpack() {
 }
 
 src_configure() {
-	python setup.py build
+	python2 setup.py build
 }
 
 src_install() {
-	python setup.py install
+	python2 setup.py install --prefix=${PREFIX} --root=${EPREFIX}
 }
