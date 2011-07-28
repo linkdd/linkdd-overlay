@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}
 		xft? ( x11-libs/libXft media-libs/freetype )"
 
 src_unpack() {
-	git clone -b splitlayout ${SRC_GIT} ${WORKDIR}/${P}
+	git clone ${SRC_GIT} ${WORKDIR}/${P}
 }
 
 src_configure() {
