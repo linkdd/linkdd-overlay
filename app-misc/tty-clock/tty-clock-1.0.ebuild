@@ -4,7 +4,7 @@
 
 EAPI=3
 
-inherit eutils git
+inherit eutils git-2
 
 DESCRIPTION="lightweight digital clock in ncurses"
 HOMEPAGE="http://github.com/xorg62/tty-clock"
@@ -22,7 +22,7 @@ DEPEND="dev-vcs/git
 RDEPEND="${DEPEND}"
 
 src_unpack() {
-	git_src_unpack || die "Error: src_unpack failed!"
+	git-2_src_unpack
 }
 
 src_compile() {
@@ -30,5 +30,6 @@ src_compile() {
 }
 
 src_install() {
-	make install || die "Error: src_install failed!"
+	mkdir -p "${D}/usr/bin/"
+	make INSTALLPATH="${D}/usr/bin/" install || die "Error: src_install failed!"
 }
