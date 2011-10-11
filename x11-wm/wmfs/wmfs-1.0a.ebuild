@@ -2,19 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils
-inherit cmake-utils
+inherit eutils cmake-utils git
 
 EAPI=3
 
 DESCRIPTION="Window Manager From Scratch is a lightweight tiling window manager."
 HOMEPAGE="http://wmfs.info/"
 SRC_URI=""
-SRC_GIT="git://github.com/xorg62/wmfs.git"
+
+EGIT_REPO_URI="http://github.com/xorg62/wmfs"
+EGIT_BRANCH="master"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="imlib2 xrandr xinerama xft"
 
 DEPEND="dev-vcs/git
@@ -28,7 +29,7 @@ RDEPEND="${DEPEND}
 		xft? ( x11-libs/libXft media-libs/freetype )"
 
 src_unpack() {
-	git clone ${SRC_GIT} ${WORKDIR}/${P}
+	git_src_unpack || die "src_unpack failed!"
 }
 
 src_configure() {
