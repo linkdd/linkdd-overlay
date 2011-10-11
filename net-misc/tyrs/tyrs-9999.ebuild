@@ -4,16 +4,18 @@
 
 EAPI=3
 PYTHON_DEPEND="2"
-inherit python distutils
+inherit python distutils git
 
 DESCRIPTION="Tyrs is a twitter and identi.ca client based on curse."
 HOMEPAGE="https://github.com/Nic0/tyrs"
 SRC_URI=""
-SRC_GIT="git://github.com/Nic0/tyrs.git"
+
+EGIT_REPO_URI="http://github.com/Nic0/tyrs"
+EGIT_BRANCH="master"
 
 LICENSE="GPL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="alpha amd64 ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="dev-vcs/git"
@@ -23,7 +25,7 @@ RDEPEND="${DEPEND}
 		dev-python/python-distutils-extra"
 
 src_unpack() {
-	git clone ${SRC_GIT} ${WORKDIR}/${P}
+	git_src_unpack || "src_unpack failed!"
 }
 
 src_prepare() {
