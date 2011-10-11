@@ -26,13 +26,21 @@ RDEPEND="${DEPEND}
 		xinerama? ( x11-libs/libXinerama )"
 
 src_unpack() {
-	git_src_unpack || die "src_unpack failed!"
+	git_src_unpack || die "Error: src_unpack failed!"
 }
 
 src_configure() {
 	if ! use xinerama; then
-		./configure --without-xinerama
+		./configure --without-xinerama || die "Error: src_configure failed!"
 	else
-		./configure
+		./configure || die "Error: src_configure failed!"
 	fi
+}
+
+src_compile() {
+	make || die "Error: src_compile failed!"
+}
+
+src_install() {
+	make install || die "Error: src_install failed!"
 }

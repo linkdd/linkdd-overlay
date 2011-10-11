@@ -24,3 +24,11 @@ RDEPEND="${DEPEND}"
 src_unpack() {
 	git_src_unpack || die "Error: src_unpack failed!"
 }
+
+src_compile() {
+	make || die "Error: src_compile failed!"
+}
+
+src_install() {
+	make install || die "Error: src_install failed!"
+}
