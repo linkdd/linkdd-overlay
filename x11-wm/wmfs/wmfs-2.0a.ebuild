@@ -42,5 +42,5 @@ src_compile() {
 }
 
 src_install() {
-	make install || die "Error: src_install failed!"
+	make DESTDIR="${D}" install || die "Error: src_install failed!"
 }
