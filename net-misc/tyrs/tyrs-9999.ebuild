@@ -22,7 +22,8 @@ DEPEND="dev-vcs/git"
 RDEPEND="${DEPEND}
 		dev-python/python-twitter
 		dev-python/setuptools
-		dev-python/python-distutils-extra"
+		dev-python/python-distutils-extra
+		dev-python/urwid"
 
 src_unpack() {
 	git_src_unpack || "src_unpack failed!"
