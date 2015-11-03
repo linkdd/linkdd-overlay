@@ -4,7 +4,8 @@
           contact = "david.jose.delassus@gmail.com"
           type    = "git"
           src     = "git://github.com/linkdd/linkdd-overlay.git"
-          name    = "linkdd-overlay">
+          name    = "linkdd-overlay"
+          masters = "gentoo">
           <link>
                http://github.com/linkdd/linkdd-overlay
           </link>
